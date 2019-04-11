@@ -22,6 +22,11 @@ namespace Tests
             var c = new ProfitReport();
             Assert.AreEqual(200, c.GenerateProfitReport(price1, price2));
         }
+        [Test]
+        public void AddItem_ListAndItem_List()
+        {
+            var lista = new Items();
 
+        }
     }
 }

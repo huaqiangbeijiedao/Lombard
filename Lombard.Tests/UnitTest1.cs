@@ -45,16 +45,14 @@ namespace Tests
                 new Item {Price = 5.00, Quantity = 50},
                 new Item {Price = 20.00, Quantity = 120},
             };
-
+            var result = TransactionReport.TotalReport(bought, sold);
+            Assert.AreEqual(result, 5500);
+        }
 
         [Test]
         public void AddItem_ListAndItem_List()
         {
             var lista = new Items();
-            var result = TransactionReport.TotalReport(bought, sold);
-            Assert.AreEqual(result, 5500);
-        }
-
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lombard.Logic
 {
-    class Item
+    public class Item
     {
         public int ProductId { get; set; }
         public string Name { get; set; }

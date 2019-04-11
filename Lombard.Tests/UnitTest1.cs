@@ -54,8 +54,21 @@ namespace Tests
         {
             var lista = new Items();
             var item = new Item();
+            var add = new AddItem();
             item.Name = "Asss";
-            lista.ListOfItems.Add(item);
+            add.AddItemAtEnd(lista, item);
+            Assert.Contains(item, lista.ListOfItems);
+        }
+        [Test]
+        public void RemoveFirstOccurenceFromItem_ListAndItem_List()
+        {
+            var lista = new Items();
+            
+            var item = new Item();
+            var remove = new RemoveItem();
+
+            item.Name = "Asss";
+            
             Assert.Contains(item, lista.ListOfItems);
         }
     }

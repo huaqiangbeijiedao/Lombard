@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Lombard.Logic
 {
-    public class AddItem
+    public class RemoveItem
     {
-        public Items AddItemAtEnd (Items items, Item item)
+        public Items RemoveFirstOccurenceFromItem(Items items, Item remove)
         {
-            items.ListOfItems.Add(item);
+            items.ListOfItems.Remove(remove);
             return items;
         }
     }

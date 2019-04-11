@@ -29,10 +29,31 @@ namespace Tests
             var c = new ProfitReport();
             Assert.AreEqual(200, c.GenerateProfitReport(price1, price2));
         }
+
+        [Test]
+        public void TransationTest_boughtAndSoldItems_ReturnSum()
+        {
+            var bought = new List<Item>
+            {
+                new Item {Price = 5.00, Quantity = 100},
+                new Item {Price = 3.00, Quantity = 50},
+                new Item {Price = 10.00, Quantity = 120},
+            };
+            var sold = new List<Item>
+            {
+                new Item {Price = 10.00, Quantity = 100},
+                new Item {Price = 5.00, Quantity = 50},
+                new Item {Price = 20.00, Quantity = 120},
+            };
+
+
         [Test]
         public void AddItem_ListAndItem_List()
         {
             var lista = new Items();
+            var result = TransactionReport.TotalReport(bought, sold);
+            Assert.AreEqual(result, 5500);
+        }
 
         }
     }

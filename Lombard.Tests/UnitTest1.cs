@@ -10,8 +10,7 @@ namespace Tests
     public class Tests
     {
        
-        [Test]
-  
+        [Test]  
         public void WareHouseQuantity_ItemsList_CorrectQuantity()
         {
             var listOfItems = new List<Item>
@@ -47,7 +46,7 @@ namespace Tests
                 new Item {Price = 5.00, Quantity = 50},
                 new Item {Price = 20.00, Quantity = 120},
             };
-            var result = TransactionReport.TotalReport(bought, sold);
+            var result = TransactionReport.TotalTradingReport(bought, sold);
             Assert.AreEqual(result, 5500);
         }
 
@@ -82,5 +81,38 @@ namespace Tests
             Assert.False(lista.ListOfItems.Contains(item));
 
         }
+        [Test]
+        [TestCase(5.0, 8, 40)]
+        [TestCase(8.0, 10, 80)]
+        [TestCase(0.0, 10, 0)]
+        public void GetTotalPrice_Item_ReturnsQuantityMultiPrice(double x, int y, double effect)
+        {
+            var item = new Item { Price = x, Quantity = y };
+
+            Assert.AreEqual(effect, item.GetTotalPrice());
+        }
+        [Test]
+        public void GetPriceOfAllProducts_ListOfItems_ReturnsQuantityMultiPrice()
+        {
+            var items = new Items();
+            items.ListOfItems.Add(new Item { Price = 5.00, Quantity = 100 });
+            items.ListOfItems.Add(new Item { Price = 3.00, Quantity = 50 });
+            items.ListOfItems.Add(new Item { Price = 10.00, Quantity = 120 });
+
+            var result = items.GetPriceOfAllProducts();
+            Assert.AreEqual(1850, result);
+        }
+        [Test]
+        public void GetPriceOfAllProducts_ListOfItems_ReturnsQuantityMultiPriceV2()
+        {
+            var items = new Items();
+            items.ListOfItems.Add(new Item { Price = 1.50, Quantity = 2 });
+            items.ListOfItems.Add(new Item { Price = 1.00, Quantity = 10 });
+            items.ListOfItems.Add(new Item { Price = 0.00, Quantity = 120 });
+
+            var result = items.GetPriceOfAllProducts();
+            Assert.AreEqual(13, result);
+        }
+
     }
 }

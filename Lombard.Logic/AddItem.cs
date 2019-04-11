@@ -8,9 +8,8 @@ namespace Lombard.Logic
     {
         public List<Item> AddItemAtEnd (List<Item> items, Item item)
         {
-            //items.Add(item);
-            //return items;
-            throw new NotImplementedException();
+            items.Add(item);
+            return items;
         }
     }
 }

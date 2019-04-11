@@ -53,6 +53,10 @@ namespace Tests
         public void AddItem_ListAndItem_List()
         {
             var lista = new Items();
+            var item = new Item();
+            item.Name = "Asss";
+            lista.ListOfItems.Add(item);
+            Assert.Contains(item, lista.ListOfItems);
         }
     }
 }

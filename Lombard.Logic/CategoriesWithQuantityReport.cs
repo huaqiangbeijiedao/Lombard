@@ -6,9 +6,22 @@ namespace Lombard.Logic
 {
     public class CategoriesWithQuantityReport
     {
-        public Dictionary<string, int> GroupByNames(Items itemsToGroup)
+        public Dictionary<string, double> GroupByNames(Items itemsToGroup)
         {
-            throw new NotImplementedException();
+            Dictionary<string, double> itemsGrouped = new Dictionary<string, double>();
+            foreach (Item item in itemsToGroup.ListOfItems)
+            {
+                if(itemsGrouped.ContainsKey(item.Name))
+                {
+                    itemsGrouped[item.Name] += item.Quantity;
+                }
+                else
+                {
+                    itemsGrouped.Add(item.Name, item.Quantity);
+                }
+            }
+
+            return itemsGrouped;
         }
     }
 }

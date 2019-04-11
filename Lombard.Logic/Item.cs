@@ -10,5 +10,15 @@ namespace Lombard.Logic
         public string Name { get; set; }
         public double Price { get; set; }
         public int Quantity { get; set; }
+
+        static public int WareHouseQuantity(IEnumerable<Item> items)
+        {
+            int quantinty = 0;
+            foreach(var i in items)
+            {
+                quantinty += i.Quantity; 
+            }
+            return quantinty;
+        }
     }
 }

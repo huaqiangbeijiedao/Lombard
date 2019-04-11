@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Lombard.Data;
 
 namespace Lombard
 {
@@ -31,6 +33,7 @@ namespace Lombard
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddEntityFrameworkSqlite().AddDbContext<DataContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

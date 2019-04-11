@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Lombard.Logic
 {
-    class SearchForItem
+    public class SearchForItem
     {
-        public Items SearchForItems(Items items)
+        public Item SearchForItems(Items items, string name)
         {
             throw new NotImplementedException();
         }

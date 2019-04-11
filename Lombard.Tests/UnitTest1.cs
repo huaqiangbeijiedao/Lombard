@@ -1,5 +1,5 @@
 using NUnit.Framework;
-
+using Lombard.Logic;
 namespace Tests
 {
     public class Tests
@@ -14,8 +14,14 @@ namespace Tests
         {
             Assert.Pass();
         }
-
-
+        [Test]
+        public void ProfitReport_TwoValues_Output()
+        {
+            double price1 = 100;
+            double price2 = 300;
+            var c = new ProfitReport();
+            Assert.AreEqual(200, c.GenerateProfitReport(price1, price2));
+        }
 
     }
 }

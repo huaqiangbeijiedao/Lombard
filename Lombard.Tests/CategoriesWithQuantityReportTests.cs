@@ -40,20 +40,10 @@ namespace Lombard.Tests
         {
             var catReport = new CategoriesWithQuantityReport();
 
-        }
+            Items items = new Items();
+            var result = catReport.GroupByNames(items);
 
-
-        [Test]
-        public void GroupByQuantity_PopulatedList_ReturnsGroupedDictionary()
-        {
-            var catReport = new CategoriesWithQuantityReport();
-
-        }
-
-        [Test]
-        public void GroupByQuantity_EmptyList_ReturnsEmptyDictionary()
-        {
-
+            Assert.IsTrue(result.Keys.Count == 0);
         }
     }
 }

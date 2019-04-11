@@ -6,7 +6,7 @@ namespace Lombard.Logic
 {
     public static class TransactionReport
     {
-        public static double TotalReport(IEnumerable<Item> bought, IEnumerable<Item> sold)
+        public static double TotalTradingReport(IEnumerable<Item> bought, IEnumerable<Item> sold)
         {
             var result = bought.Sum(i => i.Price * i.Quantity) + sold.Sum(i => i.Price * i.Quantity);
             return result;

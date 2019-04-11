@@ -6,11 +6,10 @@ namespace Lombard.Logic
 {
     public class AddItem
     {
-        public List<Item> AddItemAtEnd (List<Item> items, Item item)
+        public Items AddItemAtEnd (Items items, Item item)
         {
-            //items.Add(item);
-            //return items;
-            throw new NotImplementedException();
+            items.ListOfItems.Add(item);
+            return items;
         }
     }
 }

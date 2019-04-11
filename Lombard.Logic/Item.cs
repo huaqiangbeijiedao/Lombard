@@ -20,5 +20,9 @@ namespace Lombard.Logic
             }
             return quantinty;
         }
+        public double GetTotalPrice()
+        {
+            return Price*Quantity;
+        }
     }
 }

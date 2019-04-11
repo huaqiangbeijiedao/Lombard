@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Lombard.Logic
@@ -12,5 +13,10 @@ namespace Lombard.Logic
         }
             
         public List<Item> ListOfItems { get; set; }
+
+        public double GetPriceOfAllProducts()
+        {
+            return ListOfItems.Sum(i=>i.GetTotalPrice());
+        }
     }
 }

@@ -14,10 +14,6 @@ namespace Lombard.Logic
             
         public List<Item> ListOfItems { get; set; }
 
-        public Items()
-        {
-            ListOfItems = new List<Item>();
-        }
         public double GetPriceOfAllProducts()
         {
             return ListOfItems.Sum(i=>i.GetTotalPrice());

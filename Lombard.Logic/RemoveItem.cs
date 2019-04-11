@@ -8,6 +8,10 @@ namespace Lombard.Logic
     {
         public Items RemoveFirstOccurenceFromItem(Items items, Item remove)
         {
+            if (items.ListOfItems.Count==0)
+            {
+                return items;
+            }
             items.ListOfItems.Remove(remove);
             return items;
         }

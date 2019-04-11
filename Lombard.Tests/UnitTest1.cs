@@ -3,6 +3,8 @@ using NUnit.Framework;
 using System.Collections.Generic;
 
 using Lombard.Logic;
+using System;
+
 namespace Tests
 {
     public class Tests
@@ -64,12 +66,21 @@ namespace Tests
         {
             var lista = new Items();
             
-            var item = new Item();
+            var item = new Item { Name = "sth" };
+            lista.ListOfItems.Add(item);
             var remove = new RemoveItem();
+            remove.RemoveFirstOccurenceFromItem(lista, item);
+            Assert.False(lista.ListOfItems.Contains(item));
+        }
+        [Test]
+        public void RemoveFirstOccurenceOfItem_ListAndItem_ThrowException()
+        {
+            var lista = new Items();
+            var item = new Item { Name = "sth" };
+            var remove = new RemoveItem();
+            remove.RemoveFirstOccurenceFromItem(lista, item);
+            Assert.False(lista.ListOfItems.Contains(item));
 
-            item.Name = "Asss";
-            
-            Assert.Contains(item, lista.ListOfItems);
         }
     }
 }

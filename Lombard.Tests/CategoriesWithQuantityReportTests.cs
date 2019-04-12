@@ -13,7 +13,7 @@ namespace Lombard.Tests
         {
             var catReport = new CategoriesWithQuantityReport();
 
-            Items items = new Items();
+           Items items = new Items();
            var item = new Item()
             {
                 Name = "TestName",

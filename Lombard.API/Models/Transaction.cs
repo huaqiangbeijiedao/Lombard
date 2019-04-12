@@ -8,7 +8,14 @@ namespace Lombard.API.Models
     public class Transaction
     {
         public int TransactionId { get; set; }
-        public List<Product> Products { get; set; }
-        public DateTime TransactionDate { get; set; } 
+        public List<ProductHistory> ProductHistory { get; set; }
+        public DateTime TransactionDate { get; set; }
+        public TransactionType TransactionType { get; set; }
+    }
+
+    public enum TransactionType
+    {
+        Bought,
+        Sold
     }
 }

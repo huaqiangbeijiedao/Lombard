@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace Lombard.API.Models
 {
-    public class Product
+    public class ProductHistory
     {
-        public int ProductId { get; set; }
+        public int ProductHistoryId { get; set; }
         public string Name { get; set; }
-        public int Quantity { get; set; }
         public double Price { get; set; }
+        public int Quantity { get; set; } 
     }
 }

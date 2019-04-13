@@ -114,7 +114,7 @@ namespace Lombard.Tests.LibraryTests
 
             var result = library.GetTotalTurnover(new EnumerableQuery<Transaction>(transactions));
 
-            Assert.IsTrue(result > -6.49 && result < -6.51);
+            Assert.IsTrue(result < -6.49 && result > -6.51);
         }
 
         [Test]
@@ -154,7 +154,7 @@ namespace Lombard.Tests.LibraryTests
 
             var result = library.GetProfit(new EnumerableQuery<Transaction>(transactions));
 
-            Assert.IsTrue(result > 0.49 && result < 0.51);
+            Assert.IsTrue(result < -0.49 && result > -0.51);
         }
 
         [Test]

@@ -54,7 +54,7 @@ namespace Lombard.Tests.LibraryTests
             });
 
 
-            IEnumerable<Product> result = library.GetAllProducts(new EnumerableQuery<Product>(products));
+            IEnumerable<Product> result = library.CheckProductsOutage(new EnumerableQuery<Product>(products));
 
             Assert.IsTrue(result.Count() == 1);
             Assert.IsTrue(result.Any(p => p.Name == "Test"));
@@ -68,7 +68,7 @@ namespace Lombard.Tests.LibraryTests
             List<Product> products = new List<Product>();
 
 
-            IEnumerable<Product> result = library.GetAllProducts(new EnumerableQuery<Product>(products));
+            IEnumerable<Product> result = library.CheckProductsOutage(new EnumerableQuery<Product>(products));
 
             Assert.IsTrue(!result.Any());
         }

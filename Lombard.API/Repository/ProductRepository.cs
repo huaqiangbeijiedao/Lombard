@@ -2,11 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Lombard.API.Repository
 {
-    public class ProductRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly DataContext _context;
 
@@ -14,9 +13,11 @@ namespace Lombard.API.Repository
         {
             _context = context;
         }
-        public async Task<Product> GetProductByIdAsync(int Id)
+
+        public List<Product> GetProducts()
         {
-            throw new NotImplementedException();
+            var products = _context.Products.ToList();
+            return products;
         }
     }
 }

@@ -18,5 +18,29 @@ namespace Lombard.Logic
             //Może dodać parametr zamiast 10?
             return contextProducts.Where(p => p.Quantity < 10);
         }
+        public Product GetProductById(int id, IEnumerable<Product> contextProducts)
+        {
+            return contextProducts.SingleOrDefault(p => p.ProductId == id);
+        }
+        public int GetProductQuantityById(int id, IEnumerable<Product> contextProducts)
+        {
+            if (!contextProducts.Any(p => p.ProductId == id))
+                return 0;
+            return contextProducts.SingleOrDefault(p => p.ProductId == id).Quantity;
+        }
+        public double GetProductPriceById(int id, IEnumerable<Product> contextProducts)
+        {
+            if (!contextProducts.Any(p => p.ProductId == id))
+                return 0;
+            return contextProducts.SingleOrDefault(p=>p.ProductId == id).Price;
+        }
+        public IEnumerable<Product> GetProductsByName(string name, IEnumerable<Product> contextProducts)
+        {
+            return contextProducts.Where(p => p.Name == name);
+        }
+        public void AddProduct()
+        {
+
+        }
     }
 }

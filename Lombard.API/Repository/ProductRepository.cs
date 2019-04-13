@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Lombard.API.Repository
 {
-    public class ProductRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly DataContext _context;
 
@@ -14,5 +14,10 @@ namespace Lombard.API.Repository
             _context = context;
         }
 
+        public List<Product> GetProducts()
+        {
+            var products = _context.Products.ToList();
+            return products;
+        }
     }
 }

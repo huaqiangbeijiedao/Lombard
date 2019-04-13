@@ -20,19 +20,19 @@ namespace Lombard.Logic
         }
         public Product GetProductById(int id, IEnumerable<Product> contextProducts)
         {
-            return contextProducts.SingleOrDefault(p => p.ProductId == id);
+            return contextProducts.SingleOrDefault(p => p.Id == id);
         }
         public int GetProductQuantityById(int id, IEnumerable<Product> contextProducts)
         {
-            if (!contextProducts.Any(p => p.ProductId == id))
+            if (!contextProducts.Any(p => p.Id == id))
                 return 0;
-            return contextProducts.SingleOrDefault(p => p.ProductId == id).Quantity;
+            return contextProducts.SingleOrDefault(p => p.Id == id).Quantity;
         }
         public double GetProductPriceById(int id, IEnumerable<Product> contextProducts)
         {
-            if (!contextProducts.Any(p => p.ProductId == id))
+            if (!contextProducts.Any(p => p.Id == id))
                 return 0;
-            return contextProducts.SingleOrDefault(p=>p.ProductId == id).Price;
+            return contextProducts.SingleOrDefault(p=>p.Id == id).Price;
         }
         public IEnumerable<Product> GetProductsByName(string name, IEnumerable<Product> contextProducts)
         {

@@ -82,13 +82,13 @@ namespace Lombard.Tests.LibraryTests
             ProductLibrary library = new ProductLibrary();
             List<Product> products = new List<Product>();
 
-            var product = new Product { ProductId = id };
+            var product = new Product { Id = id };
             products.Add(product);
-            products.Add(new Product { ProductId = 2 });
-            products.Add(new Product { ProductId = 9 });
+            products.Add(new Product { Id = 2 });
+            products.Add(new Product { Id = 9 });
             Product result = library.GetProductById(id, products);
 
-            Assert.AreEqual(result.ProductId, product.ProductId);
+            Assert.AreEqual(result.Id, product.Id);
         }
         [Test]
         [TestCase(1)]
@@ -97,7 +97,7 @@ namespace Lombard.Tests.LibraryTests
             ProductLibrary library = new ProductLibrary();
             List<Product> products = new List<Product>();
 
-            var product = new Product { ProductId = id };
+            var product = new Product { Id = id };
             products.Add(product);
             Product result = library.GetProductById(id + 1, products);
 
@@ -112,10 +112,10 @@ namespace Lombard.Tests.LibraryTests
             ProductLibrary library = new ProductLibrary();
             List<Product> products = new List<Product>();
 
-            var product = new Product { ProductId = id, Quantity = q };
+            var product = new Product { Id = id, Quantity = q };
             products.Add(product);
-            products.Add(new Product { ProductId = 2, Quantity = 5 });
-            products.Add(new Product { ProductId = 9, Quantity = 1 });
+            products.Add(new Product { Id = 2, Quantity = 5 });
+            products.Add(new Product { Id = 9, Quantity = 1 });
             var result = library.GetProductQuantityById(id, products);
 
             Assert.AreEqual(result, product.Quantity);
@@ -126,7 +126,7 @@ namespace Lombard.Tests.LibraryTests
             ProductLibrary library = new ProductLibrary();
             List<Product> products = new List<Product>();
 
-            var product = new Product { ProductId = 1 };
+            var product = new Product { Id = 1 };
             products.Add(product);
             var result = library.GetProductQuantityById(2, products);
 
@@ -141,7 +141,7 @@ namespace Lombard.Tests.LibraryTests
             ProductLibrary library = new ProductLibrary();
             List<Product> products = new List<Product>();
 
-            var product = new Product { ProductId = id, Price = p };
+            var product = new Product { Id = id, Price = p };
             products.Add(product);
             var result = library.GetProductPriceById(id, products);
 
@@ -153,7 +153,7 @@ namespace Lombard.Tests.LibraryTests
             ProductLibrary library = new ProductLibrary();
             List<Product> products = new List<Product>();
 
-            var product = new Product { ProductId = 1 };
+            var product = new Product { Id = 1 };
             products.Add(product);
             var result = library.GetProductPriceById(2, products);
 
@@ -165,8 +165,8 @@ namespace Lombard.Tests.LibraryTests
             ProductLibrary library = new ProductLibrary();
             List<Product> products = new List<Product>();
 
-            var product = new Product { ProductId = 1, Name = "Opona" };
-            var product2 = new Product { ProductId = 2, Name = "Mleko" };
+            var product = new Product { Id = 1, Name = "Opona" };
+            var product2 = new Product { Id = 2, Name = "Mleko" };
             products.Add(product);
             products.Add(product2);
 
@@ -180,9 +180,9 @@ namespace Lombard.Tests.LibraryTests
             ProductLibrary library = new ProductLibrary();
             var products = new List<Product>
                 {
-                new Product { ProductId = 1, Name = "Opona" },
-                new Product { ProductId = 2, Name = "Mleko" },
-                new Product { ProductId = 3, Name = "Opona" }
+                new Product { Id = 1, Name = "Opona" },
+                new Product { Id = 2, Name = "Mleko" },
+                new Product { Id = 3, Name = "Opona" }
                 };
 
             var result = library.GetProductsByName("Opona", products);

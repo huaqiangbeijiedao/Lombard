@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Lombard.API.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,8 @@ namespace Lombard.API.Migrations
                     ProductId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
-                    Quantity = table.Column<int>(nullable: false)
+                    Quantity = table.Column<int>(nullable: false),
+                    Price = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,7 +45,7 @@ namespace Lombard.API.Migrations
                     Name = table.Column<string>(nullable: true),
                     Price = table.Column<double>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
-                    TransactionId = table.Column<int>(nullable: true)
+                    TransactionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,7 +55,7 @@ namespace Lombard.API.Migrations
                         column: x => x.TransactionId,
                         principalTable: "Transactions",
                         principalColumn: "TransactionId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

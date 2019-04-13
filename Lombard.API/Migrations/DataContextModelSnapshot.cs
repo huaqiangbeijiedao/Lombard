@@ -43,7 +43,7 @@ namespace Lombard.API.Migrations
 
                     b.Property<int>("Quantity");
 
-                    b.Property<int?>("TransactionId");
+                    b.Property<int>("TransactionId");
 
                     b.HasKey("ProductHistoryId");
 
@@ -68,9 +68,10 @@ namespace Lombard.API.Migrations
 
             modelBuilder.Entity("Lombard.API.Models.ProductHistory", b =>
                 {
-                    b.HasOne("Lombard.API.Models.Transaction")
+                    b.HasOne("Lombard.API.Models.Transaction", "Transaction")
                         .WithMany("ProductHistory")
-                        .HasForeignKey("TransactionId");
+                        .HasForeignKey("TransactionId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

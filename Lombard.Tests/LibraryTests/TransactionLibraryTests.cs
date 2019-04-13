@@ -18,18 +18,18 @@ namespace Lombard.Tests.LibraryTests
             List<Transaction> transactions = new List<Transaction>();
             transactions.Add(new Transaction()
             {
-                TransactionId = 1
+                Id = 1
             });
             transactions.Add(new Transaction()
             {
-                TransactionId = 2
+                Id = 2
             });
 
             IEnumerable<Transaction> result = library.GetAllTransactions(new EnumerableQuery<Transaction>(transactions));
 
             Assert.IsTrue(result.Count() == 2);
-            Assert.IsTrue(result.Any(p => p.TransactionId == 1));
-            Assert.IsTrue(result.Any(p => p.TransactionId == 2));
+            Assert.IsTrue(result.Any(p => p.Id == 1));
+            Assert.IsTrue(result.Any(p => p.Id == 2));
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace Lombard.Tests.LibraryTests
             List<Transaction> transactions = new List<Transaction>();
             transactions.Add(new Transaction()
             {
-                TransactionId = 1,
+                Id = 1,
                 ProductHistory = new List<ProductHistory>()
                 {
                     new ProductHistory()
@@ -65,7 +65,7 @@ namespace Lombard.Tests.LibraryTests
             });
             transactions.Add(new Transaction()
             {
-                TransactionId = 2,
+                Id = 2,
                 ProductHistory = new List<ProductHistory>()
                 {
                     new ProductHistory()
@@ -87,7 +87,7 @@ namespace Lombard.Tests.LibraryTests
             List<Transaction> transactions = new List<Transaction>();
             transactions.Add(new Transaction()
             {
-                TransactionId = 1,
+                Id = 1,
                 ProductHistory = new List<ProductHistory>()
                 {
                     new ProductHistory()
@@ -102,7 +102,7 @@ namespace Lombard.Tests.LibraryTests
             });
             transactions.Add(new Transaction()
             {
-                TransactionId = 2,
+                Id = 2,
                 ProductHistory = new List<ProductHistory>()
                 {
                     new ProductHistory()
@@ -124,7 +124,7 @@ namespace Lombard.Tests.LibraryTests
             List<Transaction> transactions = new List<Transaction>();
             transactions.Add(new Transaction()
             {
-                TransactionId = 1,
+                Id = 1,
                 ProductHistory = new List<ProductHistory>()
                 {
                     new ProductHistory()
@@ -140,7 +140,7 @@ namespace Lombard.Tests.LibraryTests
             });
             transactions.Add(new Transaction()
             {
-                TransactionId = 2,
+                Id = 2,
                 ProductHistory = new List<ProductHistory>()
                 {
                     new ProductHistory()
@@ -164,7 +164,7 @@ namespace Lombard.Tests.LibraryTests
             List<Transaction> transactions = new List<Transaction>();
             transactions.Add(new Transaction()
             {
-                TransactionId = 1,
+                Id = 1,
                 ProductHistory = new List<ProductHistory>()
                 {
                     new ProductHistory()
@@ -180,7 +180,7 @@ namespace Lombard.Tests.LibraryTests
             });
             transactions.Add(new Transaction()
             {
-                TransactionId = 2,
+                Id = 2,
                 ProductHistory = new List<ProductHistory>()
                 {
                     new ProductHistory()
@@ -195,7 +195,7 @@ namespace Lombard.Tests.LibraryTests
             var result = library.GetTransactionsByType(new EnumerableQuery<Transaction>(transactions), TransactionType.Sold);
 
             Assert.IsTrue(result.All(t => t.ProductHistory.Count == 2));
-            Assert.IsTrue(result.All(t => t.TransactionId == 1));
+            Assert.IsTrue(result.All(t => t.Id == 1));
         }
 
         [Test]
@@ -205,7 +205,7 @@ namespace Lombard.Tests.LibraryTests
             List<Transaction> transactions = new List<Transaction>();
             transactions.Add(new Transaction()
             {
-                TransactionId = 1,
+                Id = 1,
                 ProductHistory = new List<ProductHistory>()
                 {
                     new ProductHistory()
@@ -221,7 +221,7 @@ namespace Lombard.Tests.LibraryTests
             });
             transactions.Add(new Transaction()
             {
-                TransactionId = 2,
+                Id = 2,
                 ProductHistory = new List<ProductHistory>()
                 {
                     new ProductHistory()
@@ -236,7 +236,7 @@ namespace Lombard.Tests.LibraryTests
             var result = library.GetTransactionsByType(new EnumerableQuery<Transaction>(transactions), TransactionType.Bought);
 
             Assert.IsTrue(result.All(t => t.ProductHistory.Count == 1));
-            Assert.IsTrue(result.All(t => t.TransactionId == 2));
+            Assert.IsTrue(result.All(t => t.Id == 2));
         }
     }
 }

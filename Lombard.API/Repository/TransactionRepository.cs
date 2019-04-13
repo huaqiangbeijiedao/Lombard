@@ -21,5 +21,22 @@ namespace Lombard.API.Repository
             var transactions = _context.Transactions.Include(prodHistory => prodHistory.ProductHistory).ToList();
             return transactions;
         }
+
+        public void AddTransaction(IEnumerable<ProductHistory> products,TransactionType transactionType)
+        {
+            var newTransaction = new Transaction
+            {
+                TransactionType = transactionType,
+                TransactionDate = DateTime.Now,
+                ProductHistory = products.ToList() 
+            };
+            _context.Transactions.Add(newTransaction);
+            _context.SaveChanges();
+
+
+        }
+        
+
+
     }
 }

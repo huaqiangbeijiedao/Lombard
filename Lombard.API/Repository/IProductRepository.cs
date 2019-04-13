@@ -9,5 +9,6 @@ namespace Lombard.API.Repository
     public interface IProductRepository
     {
        List<Product> GetProducts();
+       void AddProducts(IEnumerable<Product> products);
     }
 }

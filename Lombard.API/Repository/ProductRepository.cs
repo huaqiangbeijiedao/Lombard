@@ -19,6 +19,15 @@ namespace Lombard.API.Repository
             var products = _context.Products.ToList();
             return products;
         }
+
+        public void AddProducts(IEnumerable<Product> products)
+        {
+            foreach (var i in products)
+            {
+                _context.Products.Add(i);
+            }
+            _context.SaveChanges();
+        }
         
     }
 }

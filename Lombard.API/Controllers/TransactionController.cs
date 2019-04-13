@@ -13,18 +13,26 @@ namespace Lombard.API.Controllers
     [ApiController]
     public class TransactionController : ControllerBase
     {
-        private readonly ITransactionRepository _repo;
+        private readonly ITransactionRepository _transactionRepository;
+        private readonly IProductRepository _productRepository;
 
-        public TransactionController(ITransactionRepository repo)
+        public TransactionController(ITransactionRepository transactionRepository, IProductRepository productRepository)
         {
-            _repo = repo;
+            _transactionRepository = transactionRepository;
+            _productRepository = productRepository;
         }
 
         [HttpGet]
-        public List<Transaction> GetTransactions()
+        public IActionResult GetTransactions()
         {
-            var transaction = _repo.GetTransactions();
-            return transaction;
+            var transaction = _transactionRepository.GetTransactions();
+            return Ok(transaction);
+        }
+
+        [HttpPost]
+        public IActionResult BuyProducts(List<Product> product)
+        {
+            _transactionRepository.AddTransaction(product);
         }
 
     }

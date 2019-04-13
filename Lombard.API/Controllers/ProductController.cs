@@ -27,10 +27,6 @@ namespace Lombard.API.Controllers
             return Ok(products);
         }
 
-        [HttpPost]
-        public IActionResult BuyProduct(Product product)
-        {
-            
-        }
+       
     }
 }

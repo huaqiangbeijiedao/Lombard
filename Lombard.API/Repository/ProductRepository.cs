@@ -19,5 +19,6 @@ namespace Lombard.API.Repository
             var products = _context.Products.ToList();
             return products;
         }
+        
     }
 }

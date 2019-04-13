@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Lombard.API.Models;
 using Lombard.API.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,20 +11,20 @@ namespace Lombard.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class TransactionController : ControllerBase
     {
-        private readonly IProductRepository _repo;
+        private readonly ITransactionRepository _repo;
 
-        public ProductController(IProductRepository repo)
+        public TransactionController(ITransactionRepository repo)
         {
             _repo = repo;
         }
 
         [HttpGet]
-        public IActionResult GetProducts()
+        public List<Transaction> GetTransactions()
         {
-            var products = _repo.GetProducts();
-            return Ok(products);
+            var transaction = _repo.GetTransactions();
+            return transaction;
         }
 
     }

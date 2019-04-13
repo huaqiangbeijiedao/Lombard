@@ -1,8 +1,6 @@
 using Lombard.Logic;
 using NUnit.Framework;
 using System.Collections.Generic;
-
-using Lombard.Logic;
 using System;
 
 namespace Tests

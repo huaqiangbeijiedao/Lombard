@@ -18,7 +18,6 @@ namespace Lombard.Tests
             {
                 Name = "Test"
             };
-            
 
         }
 

@@ -18,12 +18,21 @@ namespace Lombard.API
         {
             base.OnModelCreating(builder);
 
+            builder.Entity<Transaction>()
+           .HasMany(c => c.ProductHistory)
+           .WithOne(e => e.Transaction);
+
             builder.Entity<Product>().HasData(
              new Product { Id = 1, Name = "Opona", Quantity = 30, Price = 10.00},
-             new Product { Id = 2, Name = "Felga", Quantity = 5, Price = 50.00 },
+             new Product { Id = 2, Name = "Felga", Quantity = 5, Price = 50.00},
              new Product { Id = 3, Name = "Klucz", Quantity = 100, Price = 3.00},
-             new Product { Id = 4, Name = "Sruba", Quantity = 500, Price = 1.00,}
+             new Product { Id = 4, Name = "Sruba", Quantity = 500, Price = 1.00}
             );
+
+            builder.Entity<Transaction>().HasData(
+             new Transaction { Id = 1, TransactionDate = new DateTime(2019, 4, 13), TransactionType = TransactionType.Bought },
+             new Transaction { Id = 2, TransactionDate = new DateTime(2019, 4, 14), TransactionType = TransactionType.Sold }
+             );
 
             builder.Entity<ProductHistory>().HasData(
              new ProductHistory { Id = 1, Name = "Opona", Price = 10, Quantity = 35, TransactionId = 1 },
@@ -37,10 +46,9 @@ namespace Lombard.API
              new ProductHistory { Id = 8, Name = "Sruba", Price = 1.25, Quantity = 10, TransactionId = 2 }
              );
 
-            builder.Entity<Product>().HasData(
-                new Transaction { Id = 1, TransactionDate = new DateTime(2019, 4, 13), TransactionType = TransactionType.Bought },
-                new Transaction { Id = 2, TransactionDate = new DateTime(2019, 4, 14), TransactionType = TransactionType.Sold }
-                );
+         
+
+           
         }
     }
 }

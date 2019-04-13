@@ -30,9 +30,31 @@ namespace Lombard.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult BuyProducts(List<Product> product)
+        [Route("BuyProducts")]
+        public IActionResult BuyProducts([FromBody] List<Product> products)
         {
-            _transactionRepository.AddTransaction(product);
+            _transactionRepository.AddTransaction(productHistories(products), TransactionType.Bought);
+            _productRepository.AddProducts(products);
+            return Ok();
+        }
+        [HttpPost]
+        [Route("SellProducts")]
+        public IActionResult SellProducts([FromBody] List<Product> products)
+        {
+            _transactionRepository.AddTransaction(productHistories(products), TransactionType.Sold);
+            _productRepository.AddProducts(products);
+            return Ok();
+        }
+
+
+        private List<ProductHistory> productHistories(IEnumerable<Product> products)
+        {
+            var productsHistory = new List<ProductHistory>();
+            foreach (var product in products)
+            {
+                productsHistory.Add(new ProductHistory(product));
+            }
+            return productsHistory;
         }
 
     }

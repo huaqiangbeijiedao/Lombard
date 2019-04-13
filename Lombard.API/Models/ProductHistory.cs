@@ -10,5 +10,15 @@ namespace Lombard.API.Models
 
         public int TransactionId { get; set; }
         public Transaction Transaction { get; set; }
+        public ProductHistory()
+        {
+
+        }
+        public ProductHistory(Product product)
+        {
+            Name = product.Name;
+            Price = product.Price;
+            Quantity = product.Quantity;
+        }
     }
 }

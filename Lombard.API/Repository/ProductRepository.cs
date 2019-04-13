@@ -28,6 +28,15 @@ namespace Lombard.API.Repository
             }
             _context.SaveChanges();
         }
+        public void SellProducts(IEnumerable<Product> products)
+        {
+            foreach (var i in products)
+            {
+                var result = _context.Products.SingleOrDefault(p => p.Id == i.Id);
+
+
+            }
+        }
         
     }
 }

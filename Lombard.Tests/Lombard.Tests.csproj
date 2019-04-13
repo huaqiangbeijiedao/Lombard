@@ -12,8 +12,4 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Lombard.Logic\Lombard.Logic.csproj" />
-  </ItemGroup>
-
 </Project>

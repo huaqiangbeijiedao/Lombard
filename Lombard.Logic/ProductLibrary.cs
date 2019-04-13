@@ -34,6 +34,10 @@ namespace Lombard.Logic
                 return 0;
             return contextProducts.SingleOrDefault(p=>p.ProductId == id).Price;
         }
+        public IEnumerable<Product> GetProductsByName(string name, IEnumerable<Product> contextProducts)
+        {
+            return contextProducts.Where(p => p.Name == name);
+        }
         public void AddProduct()
         {
 

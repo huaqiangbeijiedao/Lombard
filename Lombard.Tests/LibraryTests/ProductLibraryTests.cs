@@ -22,7 +22,7 @@ namespace Lombard.Tests.LibraryTests
             });
             products.Add(new Product()
             {
-                Name = "Test"                
+                Name = "Test"
             });
 
             IEnumerable<Product> result = library.GetAllProducts(new EnumerableQuery<Product>(products));
@@ -72,7 +72,7 @@ namespace Lombard.Tests.LibraryTests
 
             Assert.IsTrue(!result.Any());
         }
-        [Test] 
+        [Test]
         [TestCase(1)]
         [TestCase(3)]
         [TestCase(5)]
@@ -99,23 +99,23 @@ namespace Lombard.Tests.LibraryTests
 
             var product = new Product { ProductId = id };
             products.Add(product);
-            Product result = library.GetProductById(id+1, products);
+            Product result = library.GetProductById(id + 1, products);
 
             Assert.AreEqual(result, null);
         }
-        [TestCase(1, 100 )]
+        [TestCase(1, 100)]
         [TestCase(3, 200)]
         [TestCase(5, 50)]
         [TestCase(8, 80)]
-        public void GetProductQuantityByIdTest_GivesId_ReturnsProductQuantityForSpecifiedId(int id, int q )
+        public void GetProductQuantityByIdTest_GivesId_ReturnsProductQuantityForSpecifiedId(int id, int q)
         {
             ProductLibrary library = new ProductLibrary();
             List<Product> products = new List<Product>();
 
-            var product = new Product { ProductId = id, Quantity = q};
+            var product = new Product { ProductId = id, Quantity = q };
             products.Add(product);
-            products.Add(new Product { ProductId = 2, Quantity = 5});
-            products.Add(new Product { ProductId = 9 , Quantity = 1});
+            products.Add(new Product { ProductId = 2, Quantity = 5 });
+            products.Add(new Product { ProductId = 9, Quantity = 1 });
             var result = library.GetProductQuantityById(id, products);
 
             Assert.AreEqual(result, product.Quantity);
@@ -158,6 +158,36 @@ namespace Lombard.Tests.LibraryTests
             var result = library.GetProductPriceById(2, products);
 
             Assert.AreEqual(result, 0);
+        }
+        [Test]
+        public void GetProductsByName_GivesName_ReturnListOfProductsWithSpecifiedName()
+        {
+            ProductLibrary library = new ProductLibrary();
+            List<Product> products = new List<Product>();
+
+            var product = new Product { ProductId = 1, Name = "Opona" };
+            var product2 = new Product { ProductId = 2, Name = "Mleko" };
+            products.Add(product);
+            products.Add(product2);
+
+            var result = library.GetProductsByName("Opona", products);
+
+            Assert.AreEqual(result.Count(), 1);
+        }
+        [Test]
+        public void GetProductsByName_GivesName_ReturnListOfProductsWithSpecifiedNameV2()
+        {
+            ProductLibrary library = new ProductLibrary();
+            var products = new List<Product>
+                {
+                new Product { ProductId = 1, Name = "Opona" },
+                new Product { ProductId = 2, Name = "Mleko" },
+                new Product { ProductId = 3, Name = "Opona" }
+                };
+
+            var result = library.GetProductsByName("Opona", products);
+
+            Assert.AreEqual(result.Count(), 2);
         }
     }
 }

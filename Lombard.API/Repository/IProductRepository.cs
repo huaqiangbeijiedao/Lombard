@@ -11,6 +11,7 @@ namespace Lombard.API.Repository
        List<Product> GetProducts();
        void AddProducts(IEnumerable<Product> products);
        void RemoveProducts(IEnumerable<Product> products);
+       void DeleteProduct(int id);
        Product SearchForProductById(int productId);
        List<Product> SerachForProductsByName(string productName);
     }

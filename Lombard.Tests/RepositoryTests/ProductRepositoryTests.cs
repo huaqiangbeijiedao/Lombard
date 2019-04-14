@@ -71,6 +71,22 @@ namespace Lombard.Tests.RepositoryTests
         }
 
         [Test]
+        public void DeleteProduct_SingleProduct_DeletesProductFromContext()
+        {
+            Product testProduct = new Product()
+            {
+                Id = 1,
+                Name = "Test"
+            };
+            _context.Products.Add(testProduct);
+            _context.SaveChanges();
+
+            _repo.DeleteProduct(1);
+
+            Assert.IsEmpty(_context.Products.ToList());
+        }
+
+        [Test]
         public void SearchForProductById_SingleProduct_ReturnsProduct()
         {
             Product testProduct = new Product()

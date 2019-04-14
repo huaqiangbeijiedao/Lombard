@@ -35,8 +35,13 @@ namespace Lombard.API.Repository
 
 
         }
-        
-
-
+        public Transaction GetTransaction(int id)
+        {
+            return _context.Transactions.Include(p=>p.ProductHistory).SingleOrDefault(t => t.Id == id);
+        }
+        public List<Transaction> GetTransactionsInMonth(int month)
+        {
+            return _context.Transactions.Include(p => p.ProductHistory).Where(t => t.TransactionDate.Month == month).ToList();
+        }
     }
 }

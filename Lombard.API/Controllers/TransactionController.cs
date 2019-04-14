@@ -29,6 +29,18 @@ namespace Lombard.API.Controllers
             var transaction = _transactionRepository.GetTransactions();
             return Ok(transaction);
         }
+        [HttpGet("{id}")]
+        public IActionResult GetTransaction(int id)
+        {
+            var transaction = _transactionRepository.GetTransaction(id);
+            return Ok(transaction);
+        }
+        [HttpGet("{month}")]
+        public IActionResult GetTransactionInMonth(int month)
+        {
+            var transaction = _transactionRepository.GetTransactionsInMonth(month);
+            return Ok(transaction);
+        }
 
         [HttpPost]
         [Route("BuyProducts")]
@@ -43,7 +55,7 @@ namespace Lombard.API.Controllers
         public IActionResult SellProducts([FromBody] List<Product> products)
         {
             _transactionRepository.AddTransaction(ProductWrapper.productHistories(products), TransactionType.Sold);
-            _productRepository.AddProducts(products);
+            _productRepository.RemoveProducts(products);
             return Ok();
         }
 

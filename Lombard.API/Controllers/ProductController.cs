@@ -21,9 +21,34 @@ namespace Lombard.API.Controllers
         }
 
         [HttpGet]
+        [Route("GetProducts")]
         public IActionResult GetProducts()
         {
             var products = _repo.GetProducts();
+            return Ok(products);
+        }
+
+        [HttpPost]
+        [Route("RemoveProducts")]
+        public IActionResult RemoveProducts([FromBody] IEnumerable<Product> products)
+        {
+            _repo.RemoveProducts(products);
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("SearchById/{id}")]
+        public IActionResult SearchProductById(int id)
+        {
+            var product = _repo.SearchForProductById(id);
+            return Ok(product);
+        }
+
+        [HttpGet]
+        [Route("SearchByName/{name}")]
+        public IActionResult SearchProductsByName(string name)
+        {
+            var products = _repo.SerachForProductsByName(name);
             return Ok(products);
         }
     }

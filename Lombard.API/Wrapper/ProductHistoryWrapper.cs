@@ -17,5 +17,14 @@ namespace Lombard.API.Wrapper
             }
             return productsHistory;
         }
+        public static List<Product> products(IEnumerable<ProductHistory> productHistories)
+        {
+            var products = new List<Product>();
+            foreach (var product in productHistories)
+            {
+                products.Add(new Product(product));
+            }
+            return products;
+        }
     }
 }

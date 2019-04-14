@@ -16,11 +16,14 @@ namespace Lombard.API.Controllers
     {
         private readonly ITransactionRepository _transactionRepository;
         private readonly IProductRepository _productRepository;
+        private Transaction _lastTransaction;
+
 
         public TransactionController(ITransactionRepository transactionRepository, IProductRepository productRepository)
         {
             _transactionRepository = transactionRepository;
             _productRepository = productRepository;
+            _lastTransaction = _transactionRepository.GetLast();
         }
 
         [HttpGet]
@@ -46,7 +49,7 @@ namespace Lombard.API.Controllers
         [Route("BuyProducts")]
         public IActionResult BuyProducts([FromBody] List<Product> products)
         {
-            _transactionRepository.AddTransaction(ProductWrapper.productHistories(products), TransactionType.Bought);
+            _lastTransaction = _transactionRepository.AddTransaction(ProductWrapper.productHistories(products), TransactionType.Bought);
             _productRepository.AddProducts(products);
             return Ok();
         }
@@ -54,10 +57,24 @@ namespace Lombard.API.Controllers
         [Route("SellProducts")]
         public IActionResult SellProducts([FromBody] List<Product> products)
         {
-            _transactionRepository.AddTransaction(ProductWrapper.productHistories(products), TransactionType.Sold);
+            _lastTransaction = _transactionRepository.AddTransaction(ProductWrapper.productHistories(products), TransactionType.Sold);
             _productRepository.RemoveProducts(products);
             return Ok();
         }
 
+        [HttpDelete]
+        [Route("RemoveLast")]
+        public IActionResult RemoveTransaction()
+        {
+
+            if (_lastTransaction.TransactionType == TransactionType.Bought)
+                _productRepository.RemoveProducts(ProductWrapper.products(_lastTransaction.ProductHistory));
+            else
+                _productRepository.AddProducts(ProductWrapper.products(_lastTransaction.ProductHistory));
+
+            _lastTransaction = _transactionRepository.RemoveTransaction();
+
+            return Ok();
+        }
     }
 }

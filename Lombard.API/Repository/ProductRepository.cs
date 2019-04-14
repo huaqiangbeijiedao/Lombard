@@ -24,7 +24,11 @@ namespace Lombard.API.Repository
         {
             foreach (var i in products)
             {
-                _context.Products.Add(i);
+                var egsists = _context.Products.Find(i.Id);
+                if (egsists == null)
+                    _context.Products.Add(i);
+                else
+                    egsists.Quantity += i.Quantity;
             }
             _context.SaveChanges();
         }

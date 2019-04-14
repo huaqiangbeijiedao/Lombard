@@ -52,6 +52,13 @@ namespace Lombard.API.Repository
             }
         }
 
+        public void DeleteProduct(int id)
+        {
+            var product = _context.Products.Find(id);
+            _context.Products.Remove(product);
+            _context.SaveChanges();
+        }
+
         public Product SearchForProductById(int productId)
         {
             return _context.Products.Find(productId);

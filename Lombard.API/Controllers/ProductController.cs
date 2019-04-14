@@ -44,6 +44,14 @@ namespace Lombard.API.Controllers
             return Ok(product);
         }
 
+        [HttpDelete]
+        [Route("DeleteById/{id}")]
+        public IActionResult DeleteProductById(int id)
+        {
+            _repo.DeleteProduct(id);
+            return Ok();
+        }
+
         [HttpGet]
         [Route("SearchByName/{name}")]
         public IActionResult SearchProductsByName(string name)

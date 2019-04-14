@@ -14,11 +14,13 @@ namespace Lombard.API.Repository
         {
             _context = context;
         }
-        public IEnumerable<Product> CheckProductsOutage()
+        public IEnumerable<Product> CheckProductsOutage(int quant)
         {
             //Może dodać parametr zamiast 10?
+            // Jest i parametr :) 
             var contextProducts = _context.Products.ToList();
-            return contextProducts.Where(p => p.Quantity < 10);
+            return contextProducts.Where(p => p.Quantity < quant);
         }
+
     }
 }

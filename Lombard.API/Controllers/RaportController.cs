@@ -19,9 +19,10 @@ namespace Lombard.API.Controllers
             _raportReporisotry = raportRepository;
         }
         [HttpGet]
-        public IActionResult ProductsOutage()
+        [Route("Outage")]
+        public IActionResult ProductsOutage([FromBody] int quant)
         {
-            var sth = _raportReporisotry.CheckProductsOutage();
+            var sth = _raportReporisotry.CheckProductsOutage(quant);
             return Ok(sth);
         }
     }

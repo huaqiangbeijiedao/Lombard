@@ -8,6 +8,6 @@ namespace Lombard.API.Repository
 {
     public interface IRaportRepository
     {
-        IEnumerable<Product> CheckProductsOutage();
+        IEnumerable<Product> CheckProductsOutage(int quant);
     }
 }

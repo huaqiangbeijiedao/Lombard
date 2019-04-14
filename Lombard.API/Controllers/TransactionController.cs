@@ -55,7 +55,7 @@ namespace Lombard.API.Controllers
         public IActionResult SellProducts([FromBody] List<Product> products)
         {
             _transactionRepository.AddTransaction(ProductWrapper.productHistories(products), TransactionType.Sold);
-            _productRepository.AddProducts(products);
+            _productRepository.RemoveProducts(products);
             return Ok();
         }
 

@@ -11,5 +11,7 @@ namespace Lombard.API.Repository
     {
         List<Transaction> GetTransactions();
         void AddTransaction(IEnumerable<ProductHistory> products, TransactionType transactionType);
+        Transaction GetTransaction(int id);
+        List<Transaction> GetTransactionsInMonth(int month);
     }
 }

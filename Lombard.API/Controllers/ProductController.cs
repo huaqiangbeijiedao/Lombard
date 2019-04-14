@@ -26,7 +26,5 @@ namespace Lombard.API.Controllers
             var products = _repo.GetProducts();
             return Ok(products);
         }
-
-       
     }
 }

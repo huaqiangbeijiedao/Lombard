@@ -59,6 +59,16 @@ namespace Lombard.API.Repository
             _context.SaveChanges();
         }
 
+        public void UpdateProduct(Product product)
+        {
+            var productToUpdate = _context.Products.Find(product.Id);
+            productToUpdate.Quantity = product.Quantity;
+            productToUpdate.Name = product.Name;
+            productToUpdate.Price = product.Price;
+
+            _context.SaveChanges();
+        }
+
         public Product SearchForProductById(int productId)
         {
             return _context.Products.Find(productId);

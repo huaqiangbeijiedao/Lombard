@@ -28,6 +28,14 @@ namespace Lombard.API.Controllers
             return Ok(products);
         }
 
+        [HttpPut]
+        [Route("UpdateProduct")]
+        public IActionResult UpdateProduct([FromBody] Product product)
+        {
+            _repo.UpdateProduct(product);
+            return Ok();
+        }
+
         [HttpPost]
         [Route("RemoveProducts")]
         public IActionResult RemoveProducts([FromBody] IEnumerable<Product> products)

@@ -87,6 +87,28 @@ namespace Lombard.Tests.RepositoryTests
         }
 
         [Test]
+        public void UpdateProduct_SingleProduct_UpdatesProduct()
+        {
+            Product testProduct = new Product()
+            {
+                Id = 1,
+                Name = "Test"
+            };
+            _context.Products.Add(testProduct);
+            _context.SaveChanges();
+
+            _repo.UpdateProduct(new Product()
+            {
+                Id = 1,
+                Name = "NewTest"
+            });
+
+            var list = _context.Products.ToList();
+
+            Assert.IsTrue(list[0].Name == "NewTest");
+        }
+
+        [Test]
         public void SearchForProductById_SingleProduct_ReturnsProduct()
         {
             Product testProduct = new Product()

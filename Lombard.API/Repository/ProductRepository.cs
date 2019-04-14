@@ -28,15 +28,38 @@ namespace Lombard.API.Repository
             }
             _context.SaveChanges();
         }
-        public void SellProducts(IEnumerable<Product> products)
+
+        public void RemoveProducts(IEnumerable<Product> products)
         {
-            foreach (var i in products)
+            foreach (Product product in products)
             {
-                var result = _context.Products.SingleOrDefault(p => p.Id == i.Id);
+                var dbProduct = _context.Products.Find(product.Id);
 
+                if (product.Quantity - dbProduct.Quantity == 0)
+                {
+                    _context.Products.Remove(dbProduct);
+                }
+                else if (product.Quantity - dbProduct.Quantity < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                else
+                {
+                    dbProduct.Quantity -= product.Quantity;
+                }
 
+                _context.SaveChanges();
             }
         }
-        
+
+        public Product SearchForProductById(int productId)
+        {
+            return _context.Products.Find(productId);
+        }
+
+        public List<Product> SerachForProductsByName(string productName)
+        {
+            return _context.Products.Where(p => p.Name.Contains(productName)).ToList();
+        }
     }
 }

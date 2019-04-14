@@ -27,6 +27,25 @@ namespace Lombard.API.Controllers
             return Ok(products);
         }
 
-       
+        [HttpPost]
+        public IActionResult RemoveProducts(IEnumerable<Product> products)
+        {
+            _repo.RemoveProducts(products);
+            return Ok();
+        }
+
+        [HttpGet]
+        public IActionResult SearchProductById(int id)
+        {
+            var product = _repo.SearchForProductById(id);
+            return Ok(product);
+        }
+
+        [HttpGet]
+        public IActionResult SearchProductsByName(string name)
+        {
+            var products = _repo.SerachForProductsByName(name);
+            return Ok(products);
+        }
     }
 }

@@ -65,7 +65,7 @@ namespace Lombard.API.Repository
 
                 default:
                     //TODO
-                    throw new Exception();
+                    throw new InvalidOperationException();
             }
         }
     }

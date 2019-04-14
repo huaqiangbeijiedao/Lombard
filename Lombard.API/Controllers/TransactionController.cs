@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Lombard.API.Models;
 using Lombard.API.Repository;
+using Lombard.API.Wrapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,7 +34,7 @@ namespace Lombard.API.Controllers
         [Route("BuyProducts")]
         public IActionResult BuyProducts([FromBody] List<Product> products)
         {
-            _transactionRepository.AddTransaction(productHistories(products), TransactionType.Bought);
+            _transactionRepository.AddTransaction(ProductWrapper.productHistories(products), TransactionType.Bought);
             _productRepository.AddProducts(products);
             return Ok();
         }
@@ -41,20 +42,9 @@ namespace Lombard.API.Controllers
         [Route("SellProducts")]
         public IActionResult SellProducts([FromBody] List<Product> products)
         {
-            _transactionRepository.AddTransaction(productHistories(products), TransactionType.Sold);
+            _transactionRepository.AddTransaction(ProductWrapper.productHistories(products), TransactionType.Sold);
             _productRepository.AddProducts(products);
             return Ok();
-        }
-
-
-        private List<ProductHistory> productHistories(IEnumerable<Product> products)
-        {
-            var productsHistory = new List<ProductHistory>();
-            foreach (var product in products)
-            {
-                productsHistory.Add(new ProductHistory(product));
-            }
-            return productsHistory;
         }
 
     }

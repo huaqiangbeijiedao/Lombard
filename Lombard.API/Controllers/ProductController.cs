@@ -21,6 +21,7 @@ namespace Lombard.API.Controllers
         }
 
         [HttpGet]
+        [Route("GetProducts")]
         public IActionResult GetProducts()
         {
             var products = _repo.GetProducts();
@@ -28,6 +29,7 @@ namespace Lombard.API.Controllers
         }
 
         [HttpPost]
+        [Route("RemoveProducts")]
         public IActionResult RemoveProducts([FromBody] IEnumerable<Product> products)
         {
             _repo.RemoveProducts(products);
@@ -35,6 +37,7 @@ namespace Lombard.API.Controllers
         }
 
         [HttpGet]
+        [Route("SearchById/{id}")]
         public IActionResult SearchProductById(int id)
         {
             var product = _repo.SearchForProductById(id);
@@ -42,6 +45,7 @@ namespace Lombard.API.Controllers
         }
 
         [HttpGet]
+        [Route("SearchByName/{name}")]
         public IActionResult SearchProductsByName(string name)
         {
             var products = _repo.SerachForProductsByName(name);

@@ -46,20 +46,20 @@ namespace Lombard.API.Repository
 
 
 
-        public bool UpdateTransaction(Transaction transaction)
-        {
-            var TransToUpdate = _context.Transactions.Find(transaction.Id);
-            TransToUpdate.ProductHistory = transaction.ProductHistory;
-            TransToUpdate.TransactionDate = transaction.TransactionDate; //tego nie jestem pewny
-            if (TransToUpdate.TransactionType != transaction.TransactionType)
-            {
-                TransToUpdate.TransactionType = transaction.TransactionType;
-                _context.SaveChanges();
-                return true;
-            }
-            _context.SaveChanges();
-            return false;
-        }
+        //public bool UpdateTransaction(Transaction transaction)
+        //{
+        //    var TransToUpdate = _context.Transactions.Find(transaction.Id);
+        //    TransToUpdate.ProductHistory = transaction.ProductHistory;
+        //    TransToUpdate.TransactionDate = transaction.TransactionDate; //tego nie jestem pewny
+        //    if (TransToUpdate.TransactionType != transaction.TransactionType)
+        //    {
+        //        TransToUpdate.TransactionType = transaction.TransactionType;
+        //        _context.SaveChanges();
+        //        return true;
+        //    }
+        //    _context.SaveChanges();
+        //    return false;
+        //}
         public Transaction RemoveTransaction()
         { 
             if (_context.Transactions.Count()>1)

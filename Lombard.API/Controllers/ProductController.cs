@@ -28,7 +28,7 @@ namespace Lombard.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult RemoveProducts(IEnumerable<Product> products)
+        public IActionResult RemoveProducts([FromBody] IEnumerable<Product> products)
         {
             _repo.RemoveProducts(products);
             return Ok();

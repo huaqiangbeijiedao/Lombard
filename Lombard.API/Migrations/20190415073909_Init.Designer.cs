@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lombard.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190413155428_Init")]
+    [Migration("20190415073909_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

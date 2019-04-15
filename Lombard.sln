@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombard.Tests", "Lombard.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombard.API", "Lombard.API\Lombard.API.csproj", "{C85F8A6E-1772-418C-A356-EC2786EB97BB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{97D576DB-A934-4105-A6E7-36F91F2BB886}"
+	ProjectSection(SolutionItems) = preProject
+		MyRuleSet1.ruleset = MyRuleSet1.ruleset
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

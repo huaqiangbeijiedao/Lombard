@@ -10,6 +10,7 @@ namespace Lombard.Logic
     {
         public IEnumerable<Product> GetAllProducts(IQueryable<Product> contextProducts)
         {
+            int zmieniea = 1;
             return contextProducts.ToList();
         }
 

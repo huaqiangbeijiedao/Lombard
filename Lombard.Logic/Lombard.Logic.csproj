@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <CodeAnalysisRuleSet>MyRuleSet1.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>../MyRuleSet1.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>

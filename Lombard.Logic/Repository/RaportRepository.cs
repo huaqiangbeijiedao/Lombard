@@ -24,6 +24,7 @@ namespace Lombard.API.Repository
         }
         public int GetProductQuantityById(int id)
         {
+            int a=0;
             var contextProducts = _context.Products.ToList();
             if (!contextProducts.Any(p => p.Id == id))
                 return 0;

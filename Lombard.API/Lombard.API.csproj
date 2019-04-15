@@ -23,4 +23,8 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Lombard.Logic\Lombard.Logic.csproj" />
+  </ItemGroup>
+
 </Project>

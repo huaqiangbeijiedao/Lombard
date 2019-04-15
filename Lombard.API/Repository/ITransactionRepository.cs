@@ -13,7 +13,7 @@ namespace Lombard.API.Repository
         Transaction AddTransaction(IEnumerable<ProductHistory> products, TransactionType transactionType);
         Transaction GetTransaction(int id);
         List<Transaction> GetTransactionsInMonth(int month);
-        Transaction RemoveTransaction();
+        Transaction RemoveLastTransaction();
         Transaction GetLast();
     }
 }

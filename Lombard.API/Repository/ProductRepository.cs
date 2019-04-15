@@ -33,7 +33,7 @@ namespace Lombard.API.Repository
             _context.SaveChanges();
         }
 
-        public void RemoveProducts(IEnumerable<Product> products)
+        public void RemoveOrUpdateProducts(IEnumerable<Product> products)
         {
             foreach (Product product in products)
             {

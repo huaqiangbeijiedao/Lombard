@@ -33,7 +33,6 @@ namespace Lombard.API.Repository
             _context.Transactions.Add(newTransaction);
             _context.SaveChanges();
             return newTransaction;
-
         }
         public Transaction GetTransaction(int id)
         {
@@ -60,7 +59,7 @@ namespace Lombard.API.Repository
         //    _context.SaveChanges();
         //    return false;
         //}
-        public Transaction RemoveTransaction()
+        public Transaction RemoveLastTransaction()
         { 
             if (_context.Transactions.Count()>1)
             _context.Transactions.Remove(_context.Transactions.Last());

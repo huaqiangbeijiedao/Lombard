@@ -58,7 +58,7 @@ namespace Lombard.API.Controllers
         public IActionResult SellProducts([FromBody] List<Product> products)
         {
             _lastTransaction = _transactionRepository.AddTransaction(ProductWrapper.productHistories(products), TransactionType.Sold);
-            _productRepository.RemoveProducts(products);
+            _productRepository.RemoveOrUpdateProducts(products);
             return Ok();
         }
 
@@ -68,11 +68,11 @@ namespace Lombard.API.Controllers
         {
 
             if (_lastTransaction.TransactionType == TransactionType.Bought)
-                _productRepository.RemoveProducts(ProductWrapper.products(_lastTransaction.ProductHistory));
+                _productRepository.RemoveOrUpdateProducts(ProductWrapper.products(_lastTransaction.ProductHistory));
             else
                 _productRepository.AddProducts(ProductWrapper.products(_lastTransaction.ProductHistory));
 
-            _lastTransaction = _transactionRepository.RemoveTransaction();
+            _lastTransaction = _transactionRepository.RemoveLastTransaction();
 
             return Ok();
         }

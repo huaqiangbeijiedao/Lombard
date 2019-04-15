@@ -49,19 +49,19 @@ namespace Lombard.Tests.RepositoryTests
         }
 
 
-        //[Test]
-        //public void AddTransaction_productsAndType_Transaction()
-        //{
-        //    var c = new List<ProductHistory>
-        //    {
-        //     new ProductHistory { Id = 5, Name = "fef", Price = 12, Quantity = 5, TransactionId = 3 },
-        //     new ProductHistory { Id = 6, Name = "Fsdga", Price = 51, Quantity = 5, TransactionId = 3 },
-        //     new ProductHistory { Id = 7, Name = "Kadwcz", Price = 4, Quantity = 5, TransactionId = 3 },
-        //     new ProductHistory { Id = 8, Name = "Srsfgba", Price = 1.25, Quantity = 10, TransactionId = 3 }
-        //     };
-        //    var expected = _repo.AddTransaction(c, TransactionType.Bought);
-        //    Assert.IsTrue(_context.Transactions.Count() == 3);
-        //}
+        [Test]
+        public void AddTransaction_productsAndType_Transaction()
+        {
+            var c = new List<ProductHistory>
+            {
+             new ProductHistory { Id = 9, Name = "fef", Price = 12, Quantity = 5, TransactionId = 3 },
+             new ProductHistory { Id = 10, Name = "Fsdga", Price = 51, Quantity = 5, TransactionId = 3 },
+             new ProductHistory { Id = 11, Name = "Kadwcz", Price = 4, Quantity = 5, TransactionId = 3 },
+             new ProductHistory { Id = 12, Name = "Srsfgba", Price = 1.25, Quantity = 10, TransactionId = 3 }
+             };
+            var expected = _repo.AddTransaction(c, TransactionType.Bought);
+            Assert.IsTrue(_context.Transactions.Count() == 3);
+        }
 
         [Test]
         public void GetTransactionsInMonth_month_LisTransatcion()
@@ -73,7 +73,7 @@ namespace Lombard.Tests.RepositoryTests
         [Test]
         public void RemoveTransaction_Transaction_TRansaction()
         {
-            var expected = _repo.RemoveTransaction();
+            var expected = _repo.RemoveLastTransaction();
             Assert.IsTrue(_context.Transactions.Count() == 1);
         }
 
@@ -107,8 +107,8 @@ namespace Lombard.Tests.RepositoryTests
 
             mocktrans = new List<Transaction>
             {
-             new Transaction { Id = 1, TransactionDate = new DateTime(2019, 4, 13), TransactionType = TransactionType.Bought, ProductHistory = b },
-             new Transaction { Id = 2, TransactionDate = new DateTime(2019, 4, 14), TransactionType = TransactionType.Sold, ProductHistory = c  }
+             new Transaction { Id = 3, TransactionDate = new DateTime(2019, 4, 13), TransactionType = TransactionType.Bought, ProductHistory = b },
+             new Transaction { Id = 4, TransactionDate = new DateTime(2019, 4, 14), TransactionType = TransactionType.Sold, ProductHistory = c  }
              };
             context.Products.AddRange(a);
             context.Transactions.AddRange(mocktrans);

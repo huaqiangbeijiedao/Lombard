@@ -65,7 +65,7 @@ namespace Lombard.Tests.RepositoryTests
             list.Add(testProduct);
 
 
-            _repo.RemoveProducts(list);
+            _repo.RemoveOrUpdateProducts(list);
 
             Assert.IsEmpty(_context.Products.ToList());
         }

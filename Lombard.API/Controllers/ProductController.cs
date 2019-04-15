@@ -40,7 +40,7 @@ namespace Lombard.API.Controllers
         [Route("RemoveProducts")]
         public IActionResult RemoveProducts([FromBody] IEnumerable<Product> products)
         {
-            _repo.RemoveProducts(products);
+            _repo.RemoveOrUpdateProducts(products);
             return Ok();
         }
 

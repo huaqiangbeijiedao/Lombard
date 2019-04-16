@@ -15,22 +15,22 @@ namespace Lombard.API.Controllers
             _raportReporisotry = raportRepository;
         }
         [HttpGet]
-        [Route("Outage")]
-        public IActionResult ProductsOutage([FromBody] int quant)
+        [Route("Outage/{quant}")]
+        public IActionResult ProductsOutage(int quant)
         {
             var sth = _raportReporisotry.CheckProductsOutage(quant);
             return Ok(sth);
         }
         [HttpGet]
-        [Route("QuantityByID")]
-        public IActionResult GetProductQuantityById([FromBody] int id)
+        [Route("QuantityByID/{id}")]
+        public IActionResult GetProductQuantityById(int id)
         {
             var answer = _raportReporisotry.GetProductQuantityById(id);
             return Ok(answer);
         }
         [HttpGet]
-        [Route("PriceByID")]
-        public IActionResult GetProductPriceById([FromBody] int id)
+        [Route("PriceByID/{id}")]
+        public IActionResult GetProductPriceById(int id)
         {
             var answer = _raportReporisotry.GetProductPriceById(id);
             return Ok(answer);
@@ -50,8 +50,8 @@ namespace Lombard.API.Controllers
             return Ok(answer);
         }
         [HttpGet]
-        [Route("TransactionsByType")]
-        public IActionResult GetTransactionsByType([FromBody] TransactionType transactionType)
+        [Route("TransactionsByType/{transactionType}")]
+        public IActionResult GetTransactionsByType(TransactionType transactionType)
         {
             var answer = _raportReporisotry.GetTransactionsByType(transactionType);
             return Ok(answer);
